@@ -26,7 +26,7 @@ const Login = () => {
     }
     return (
         <div className='auth'>
-            <h1>Login</h1>
+            <h1>Вход в аккаунт</h1>
             <form>
                 <input type='text' placeholder='username' name='username' onChange={handleChange} />
                 <input
@@ -35,10 +35,10 @@ const Login = () => {
                     name='password'
                     onChange={handleChange}
                 />
-                <button onClick={handleSubmit}>Login</button>
+                <button onClick={handleSubmit}>Войти</button>
                {error && <p>{error}</p>} 
                 <span>
-                    Don't you have an account? <Link className='link' to='/register'>Register</Link>
+                   У Вас нет аккаунта? <Link className='link' to='/register'>Зарегистрироваться</Link>
                 </span>
             </form>
         </div>

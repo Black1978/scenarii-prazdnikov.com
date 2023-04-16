@@ -1,10 +1,45 @@
-$lightGreen: #b9e7e7;
+$firstColor: #f2b724;
+$secondColor: #008783;
+$thirdColor: #001f25;
+$forthColor: #fbfbfb;
+$fivethColor: #969696;
+
+@mixin mobile {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (max-width: 900px) {
+        @content;
+    }
+}
 
 .app {
     display: flex;
     justify-content: center;
+    overflow: hidden;
+
     .container {
-        width: 1024px;
+        width: 100%;
+        max-width: 1440px;
+        padding: 30px;
+        border: 0.5px solid $firstColor;
+        margin: 15px;
+
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            gap: 5px;
+            padding: 20px;
+        }
+
+        @include mobile {
+            padding: 5px;
+            gap: 5px;
+            margin: 5px;
+        }
 
         .link {
             color: inherit;
@@ -15,80 +50,144 @@ $lightGreen: #b9e7e7;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: $lightGreen;
+            background-color: $fivethColor;
+            min-height: calc(100vh - 90px);
+
+            @include tablet {
+                min-width: calc(100vw - 90px);
+            }
 
             h1 {
                 font-size: 20px;
-                color: teal;
+                color: $forthColor;
                 margin-bottom: 20px;
+                margin-top: 20px;
             }
             form {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
                 padding: 50px;
-                background-color: #fff;
+                background-color: $forthColor;
+                margin-bottom: 20px;
+
+                @include mobile {
+                    padding: 25px;
+                }
 
                 input {
                     padding: 10px;
                     border: none;
-                    border-bottom: 1px solid gray;
+                    border-bottom: 1px solid $fivethColor;
                     width: 200px;
+                    @include mobile {
+                        width: 150px;
+                    }
                 }
 
                 button {
                     border: none;
                     cursor: pointer;
-                    background-color: teal;
-                    color: white;
+                    background-color: $firstColor;
+                    color: $forthColor;
+                    font-weight: 500;
                     padding: 10px;
                 }
                 span {
                     font-size: 12px;
                     text-align: center;
+                    @include mobile {
+                        font-size: 10px;
+                    }
                 }
                 p {
                     font-size: 12px;
                     color: red;
                     text-align: center;
+                    @include mobile {
+                        font-size: 10px;
+                    }
                 }
             }
         }
         //NAVBAR
         .navbar {
-            .container {
-                padding: 10px 0;
+            min-width: 130px;
+
+            .navContainer {
+                padding: 10px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                gap: 10px;
+
+                @include tablet {
+                    flex-direction: column;
+                    gap: 30px;
+                }
                 .logo {
-                    font-size: 25px;
+                    text-align: justify;
+                    @include tablet {
+                        text-align: center;
+                    }
+                }
+                .logo > a {
+                    font-size: 20px;
+                    padding: 5px;
                     font-weight: bold;
-                    color: teal;
+                    font-style: italic;
+                    color: $secondColor;
+                    text-align: center;
+
+                    @include mobile {
+                        font-size: 18px;
+                    }
                 }
                 .links {
                     display: flex;
                     gap: 10px;
                     align-items: center;
+                    justify-content: space-around;
+                    @include tablet {
+                        flex-direction: column;
+                        gap: 20px;
+                        text-align: center;
+                    }
 
                     h6 {
-                        font-size: 16px;
-                        font-weight: 300;
+                        font-size: 17px;
+                        font-weight: 400;
+                        font-style: italic;
+                        color: $secondColor;
+
+                        @include mobile {
+                            font-size: 14px;
+                        }
                     }
                     span {
                         cursor: pointer;
+                        font-size: 17px;
+                        padding: 10px;
+                        font-weight: bold;
+                        font-style: italic;
+                        color: $secondColor;
                     }
                     .write {
-                        background-color: $lightGreen;
-                        width: 50px;
-                        height: 50px;
+                        background-color: $firstColor;
+                        width: 55px;
+                        height: 55px;
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        font-weight: 300;
                         border: 1px solid #fff;
+                        color: $forthColor;
+
+                        a {
+                            font-size: 15px;
+                            font-weight: 300;
+                            font-style: normal;
+                        }
 
                         &:hover {
                             color: teal;
@@ -98,16 +197,29 @@ $lightGreen: #b9e7e7;
                     }
                 }
             }
+            @include tablet {
+                position: sticky;
+                top: 50px;
+                height: calc(100vh - 50px);
+                overflow: scroll;
+                flex: 4 0;
+                border-right: 0.5px solid $firstColor;
+            }
         }
         //FOOTER
         footer {
             margin-top: 100px;
             padding: 20px;
-            background-color: $lightGreen;
+            background-color: $firstColor;
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            @include tablet {
+                display: none;
+            }
             p {
+                color: $thirdColor;
             }
             span {
                 font-size: 12px;
@@ -115,52 +227,100 @@ $lightGreen: #b9e7e7;
         }
         //HOME PAGE
         .home {
+            @include tablet {
+                flex: 7 1;
+            }
             .posts {
                 margin-top: 50px;
                 display: flex;
                 flex-direction: column;
                 gap: 150px;
+                padding: 15px;
 
                 .post {
                     display: flex;
-                    gap: 100px;
+                    gap: 80px;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                    margin-bottom: 30px;
+
+                    @include tablet {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    &::after {
+                        content: '';
+                        width: 98%;
+                        border-bottom: 0.5px solid $firstColor;
+                    }
 
                     &:nth-child(2n + 1) {
                         flex-direction: row-reverse;
+                        @include tablet {
+                            flex-direction: column;
+                        }
                     }
                     .img {
-                        flex: 2;
+                        flex: 0 1 30%;
                         position: relative;
+                        min-width: 300px;
+
+                        @include tablet {
+                            min-width: 0;
+                            left: 30px;
+                        }
 
                         &::after {
                             content: '';
                             width: 100%;
                             height: 100%;
-                            background-color: $lightGreen;
+                            background-color: $firstColor;
                             position: absolute;
                             bottom: -20px;
                             left: -20px;
                             z-index: -1;
+                            @include tablet {
+                                width: 80%;
+                            }
                         }
 
                         img {
                             width: 100%;
-                            height: 400px;
+                            height: 100%;
                             object-fit: cover;
+                            @include tablet {
+                                width: 80%;
+                            }
                         }
                     }
                     .content {
-                        flex: 3;
+                        flex: 0 1 30%;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-
-                        h2 {
-                            font-size: 48px;
+                        gap: 20px;
+                        min-width: 300px;
+                        @include tablet {
+                            min-width: 0;
                         }
+
                         p {
                             font-size: 18px;
+                            line-height: 25px;
+                            @include tablet {
+                                font-size: 16px;
+                            }
                         }
+
+                        h2 {
+                            font-size: 30px;
+
+                            @include tablet {
+                                font-size: 25px;
+                            }
+                        }
+
                         button {
                             border: none;
                             color: teal;
@@ -173,7 +333,7 @@ $lightGreen: #b9e7e7;
                             &:hover {
                                 border: 1px solid white;
                                 color: black;
-                                background-color: $lightGreen;
+                                background-color: $firstColor;
                             }
                         }
                     }
@@ -184,20 +344,32 @@ $lightGreen: #b9e7e7;
         .single {
             display: flex;
             gap: 50px;
+            @include tablet {
+                flex: 7 1;
+            }
 
             .content {
                 flex: 5;
                 display: flex;
                 flex-direction: column;
                 gap: 30px;
+                padding: 15px;
 
                 h1 {
                     font-size: 42px;
                     color: #333;
+
+                    @include tablet {
+                        font-size: 25px;
+                    }
                 }
                 p {
                     text-align: justify;
-                    line-height: 30px;
+                    line-height: 25px;
+
+                    @include mobile {
+                        text-align: left;
+                    }
                 }
                 img {
                     width: 100%;
@@ -236,6 +408,9 @@ $lightGreen: #b9e7e7;
                 }
             }
             .menu {
+                @include tablet {
+                    display: none;
+                }
                 flex: 2;
                 display: flex;
                 flex-direction: column;
@@ -271,11 +446,10 @@ $lightGreen: #b9e7e7;
 
                         &:hover {
                             border: 1px solid white;
-                            background-color: $lightGreen;
+                            background-color: $firstColor;
                             color: black;
                         }
                     }
-                    
                 }
             }
         }
@@ -283,10 +457,14 @@ $lightGreen: #b9e7e7;
         .add {
             margin-top: 20px;
             display: flex;
+            flex-wrap: wrap;
             gap: 20px;
 
+            @include tablet {
+                flex: 7 1;
+            }
             .content {
-                flex:5;
+                flex: 5;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
@@ -299,6 +477,10 @@ $lightGreen: #b9e7e7;
                     height: 300px;
                     overflow: auto;
                     border: 1px solid lightgray;
+                    min-width: 250px;
+                    @include mobile {
+                        min-width: 50px;
+                    }
 
                     .editor {
                         height: 100%;
@@ -311,16 +493,18 @@ $lightGreen: #b9e7e7;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                
-                 .item {
+
+                .item {
                     border: 1px solid lightgray;
                     padding: 10px;
                     flex: 1;
                     display: flex;
                     flex-direction: column;
+                    gap: 10px;
                     justify-content: space-between;
                     font-size: 12px;
                     color: #555;
+                    max-height: 250px;
 
                     h1 {
                         font-weight: 700;
@@ -336,6 +520,7 @@ $lightGreen: #b9e7e7;
                     .buttons {
                         display: flex;
                         justify-content: space-between;
+                        gap: 20px;
 
                         :first-child {
                             border: 1px solid teal;

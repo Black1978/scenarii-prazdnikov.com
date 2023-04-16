@@ -24,7 +24,7 @@ const Register = () => {
     }
     return (
         <div className='auth'>
-            <h1>Register</h1>
+            <h1>Регистрация</h1>
             <form>
                 <input
                     required
@@ -47,10 +47,10 @@ const Register = () => {
                     name='password'
                     onChange={handleOnchange}
                 />
-                <button onClick={handleSubmit}>Register</button>
+                <button onClick={handleSubmit}>Регистрация</button>
                 {err && <p>{err}</p>}
                 <span>
-                    Do you have an account? <Link to='/login'>Login</Link>
+                    У Вас есть аккаунт? <Link to='/login'>Login</Link>
                 </span>
             </form>
         </div>

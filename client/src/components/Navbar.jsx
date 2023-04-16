@@ -7,42 +7,41 @@ const Navbar = () => {
     const { currentUser, logout } = useContext(AuthContext)
     return (
         <div className='navbar'>
-            <div className='container'>
+            <div className='navContainer'>
                 <div className='logo'>
                     <Link to='/'>Scenarii prazdnikov</Link>
                 </div>
                 <div className='links'>
-                    <Link className='link' to='/?cat=art'>
-                        <h6>ART </h6>
-                    </Link>
                     <Link className='link' to='/?cat=science'>
-                        <h6>SCIENCE </h6>
+                        <h6>Детские праздники</h6>
                     </Link>
                     <Link className='link' to='/?cat=technology'>
-                        <h6>TECHNOLOGY</h6>
+                        <h6>Новый Год</h6>
                     </Link>
                     <Link className='link' to='/?cat=cinema'>
-                        <h6>CINEMA</h6>
+                        <h6>Профессиональные праздники</h6>
                     </Link>
                     <Link className='link' to='/?cat=design'>
-                        <h6>DESIGN</h6>
+                        <h6>Спортивные праздники</h6>
                     </Link>
                     <Link className='link' to='/?cat=food'>
-                        <h6>FOOD</h6>
+                        <h6>Государственные праздники</h6>
                     </Link>
                     <span>{currentUser?.username}</span>
                     {currentUser ? (
                         <span onClick={() => logout()}>Logout</span>
                     ) : (
                         <Link className='link' to='/login'>
-                            Login
+                            <span>Login</span>
                         </Link>
                     )}
-                    <span className='write'>
-                        <Link to='/write' className='link'>
-                            Write
-                        </Link>
-                    </span>
+                    {currentUser && (
+                        <span className='write'>
+                            <Link to='/write' className='link'>
+                                Писать
+                            </Link>
+                        </span>
+                    )}
                 </div>
             </div>
         </div>

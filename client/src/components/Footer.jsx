@@ -3,8 +3,8 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer>
-      <p>Scenarii prazdnikov</p>
-      <span>Made with love and <b>React.js</b></span>
+      <p>scenarii-prazdnikov.com</p>
+      <span>Made with <b>React.js</b></span>
     </footer>
   )
 }
