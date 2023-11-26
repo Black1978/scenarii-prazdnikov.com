@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Home = () => {
+
+
+
+
     const [posts, setPosts] = useState([])
     const cat = useLocation().search
 
@@ -23,6 +27,9 @@ const Home = () => {
         return doc.body.textContent
     }
 
+
+    
+
     return (
         <div className='home'>
             <div className='posts'>
@@ -38,7 +45,7 @@ const Home = () => {
                                 </Link>
                                 <p>{getText(post.desc)}</p>
                                 <Link className='link' to={'/post/' + post.id}>
-                                    <button>Read More</button>
+                                    <button>Читать</button>
                                 </Link>
                             </div>
                         </div>

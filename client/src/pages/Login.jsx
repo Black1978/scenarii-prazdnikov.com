@@ -13,13 +13,14 @@ const Login = () => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
     const navigate = useNavigate()
-    const {login} = useContext(AuthContext)
-    
+    const { login } = useContext(AuthContext)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-           await login(inputs)
-            navigate('/')
+           const response = await login(inputs)
+           console.log(response)
+           navigate('/')
         } catch (err) {
             setError(err.response.data)
         }
@@ -36,10 +37,16 @@ const Login = () => {
                     onChange={handleChange}
                 />
                 <button onClick={handleSubmit}>Войти</button>
-               {error && <p>{error}</p>} 
+                {error && <p className='errmsg'>{error}</p>}
                 <span>
-                   У Вас нет аккаунта? <Link className='link' to='/register'>Зарегистрироваться</Link>
+                    У Вас нет аккаунта?{' '}
+                    <Link className='link' to='/register'>
+                        Зарегистрироваться
+                    </Link>
                 </span>
+                <p>
+                    <Link className='link' to='/'>Главная страница</Link>
+                </p>
             </form>
         </div>
     )

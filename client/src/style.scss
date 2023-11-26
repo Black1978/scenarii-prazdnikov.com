@@ -56,6 +56,9 @@ $fivethColor: #969696;
             @include tablet {
                 min-width: calc(100vw - 90px);
             }
+            @include mobile {
+                min-width: calc(100vw - 10px);
+            }
 
             h1 {
                 font-size: 20px;
@@ -63,6 +66,27 @@ $fivethColor: #969696;
                 margin-bottom: 20px;
                 margin-top: 20px;
             }
+            .successLinkButton {
+                border: none;
+                cursor: pointer;
+                background-color: $firstColor;
+                color: $forthColor;
+                font-weight: 500;
+                padding: 10px;
+                min-width: 150px;
+            }
+            .successLink {
+                font-size: 22px;
+                color: $forthColor;
+                text-align: center;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                
+                @include mobile {
+                    font-size: 20px;
+                }
+            }
+
             form {
                 display: flex;
                 flex-direction: column;
@@ -71,20 +95,61 @@ $fivethColor: #969696;
                 background-color: $forthColor;
                 margin-bottom: 20px;
 
-                @include mobile {
-                    padding: 25px;
+                @include tablet {
+                    padding: 40px;
                 }
 
-                input {
-                    padding: 10px;
-                    border: none;
-                    border-bottom: 1px solid $fivethColor;
-                    width: 200px;
-                    @include mobile {
-                        width: 150px;
+                @include mobile {
+                    padding: 30px;
+                }
+
+                .formInput {
+                    display: flex;
+                    flex-direction: column;
+                    // width: 280px;
+                    input {
+                        padding: 10px;
+                        border: none;
+                        border-bottom: 1px solid $fivethColor;
+                        width: 250px;
+                        @include mobile {
+                            width: 200px;
+                            padding: 15px;
+                        }
+                    }
+                    label {
+                        font-size: 12px;
+                        color: gray;
+                    }
+
+                    .insturctions {
+                        max-width: 250px;
+                        margin-top: 5px;
+                    }
+                    .offscreen,
+                    .hide {
+                        display: none;
+                    }
+                    .icons {
+                        margin-right: 5px;
+                    }
+                    .iconGreen {
+                        color: green;
+                    }
+                    .iconRed {
+                        color: red;
                     }
                 }
 
+                input {
+                    padding: 15px;
+                    border: none;
+                    border-bottom: 1px solid $fivethColor;
+                    width: 250px;
+                    @include mobile {
+                        width: 200px;
+                    }
+                }
                 button {
                     border: none;
                     cursor: pointer;
@@ -92,22 +157,45 @@ $fivethColor: #969696;
                     color: $forthColor;
                     font-weight: 500;
                     padding: 10px;
-                }
-                span {
-                    font-size: 12px;
-                    text-align: center;
-                    @include mobile {
-                        font-size: 10px;
+
+                    &:disabled {
+                        background-color: dimgrey;
+                        color: linen;
+                        opacity: 1;
                     }
                 }
-                p {
-                    font-size: 12px;
+                .errmsg {
+                    font-size: 16px;
                     color: red;
                     text-align: center;
+                    margin-bottom: 10px;
+                    max-width: 250px;
+                    @include mobile {
+                        font-size: 16px;
+                    }
+                }
+    
+                span {
+                    font-size: 14px;
+                    text-align: center;
                     @include mobile {
                         font-size: 10px;
                     }
                 }
+               
+                p {
+                    font-size: 16px;
+                    color: $thirdColor;
+                    text-align: center;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+
+                    @include mobile {
+                        font-size: 12px;
+                    }
+                }
+
+             
             }
         }
         //NAVBAR
@@ -516,6 +604,8 @@ $fivethColor: #969696;
                     .file {
                         text-decoration: underline;
                         cursor: pointer;
+                        font-size: 16px;
+                        color: $fivethColor;
                     }
                     .buttons {
                         display: flex;
@@ -534,7 +624,7 @@ $fivethColor: #969696;
                             cursor: pointer;
                             color: white;
                             background-color: teal;
-                            padding: 3px 5px;
+                            padding: 4px 6px;
                         }
                     }
                     .cat {

@@ -51,7 +51,7 @@ const Write = () => {
             <div className='content'>
                 <input
                     type='text'
-                    placeholder='Title'
+                    placeholder='Заголовок'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
@@ -61,13 +61,13 @@ const Write = () => {
             </div>
             <div className='menu'>
                 <div className='item'>
-                    <h1>Publish</h1>
-                    <span>
-                        <b>Status: </b> Draft
+                    <h1>Опубликовать</h1>
+                    {/* <span>
+                        <b>Status: </b>Черновик
                     </span>
                     <span>
                         <b>Visibility: </b> Public
-                    </span>
+                    </span> */}
                     <input
                         style={{ display: 'none' }}
                         type='file'
@@ -75,15 +75,15 @@ const Write = () => {
                         onChange={(e) => setFile(e.target.files[0])}
                     />
                     <label htmlFor='file' className='file'>
-                        Upload Image
+                        Загрузить изображение
                     </label>
                     <div className='buttons'>
-                        <button>Save as a draft</button>
-                        <button onClick={handleClick}>Publish</button>
+                        {/* <button>Сохранить как черновик</button> */}
+                        <button onClick={handleClick}>Опубликовать</button>
                     </div>
                 </div>
                 <div className='item'>
-                    <h2>Category</h2>
+                    <h2>Категории</h2>
                     <div className='cat'>
                         <input
                             checked={cat === 'art'}
@@ -93,7 +93,7 @@ const Write = () => {
                             id='art'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='art'>Art</label>
+                        <label htmlFor='art'>Детские праздники</label>
                     </div>
                     <div className='cat'>
                         <input
@@ -104,7 +104,7 @@ const Write = () => {
                             id='science'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='science'>Science</label>
+                        <label htmlFor='science'>Новый Год</label>
                     </div>
                     <div className='cat'>
                         <input
@@ -115,7 +115,7 @@ const Write = () => {
                             id='technology'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='technology'>Technology</label>
+                        <label htmlFor='technology'>Профессиональные праздники</label>
                     </div>
                     <div className='cat'>
                         <input
@@ -125,7 +125,7 @@ const Write = () => {
                             id='cinema'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='cinema'>Cinema</label>
+                        <label htmlFor='cinema'>Спортивные праздники</label>
                     </div>
                     <div className='cat'>
                         <input
@@ -136,18 +136,7 @@ const Write = () => {
                             id='design'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='design'>Design</label>
-                    </div>
-                    <div className='cat'>
-                        <input
-                            checked={cat === 'food'}
-                            type='radio'
-                            name='cat'
-                            value='food'
-                            id='food'
-                            onChange={(e) => setCat(e.target.value)}
-                        />
-                        <label htmlFor='food'>Food</label>
+                        <label htmlFor='design'>Государственные праздники</label>
                     </div>
                 </div>
             </div>

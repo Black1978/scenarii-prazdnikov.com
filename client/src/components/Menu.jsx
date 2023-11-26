@@ -27,7 +27,7 @@ const Menu = ({ cat }) => {
                         <h2>{post.title}</h2>
                     </Link>
                     <Link className='link' to={'/post/' + post.id}>
-                        <button>Read more</button>
+                        <button>Читать</button>
                     </Link>
                 </div>
             ))}

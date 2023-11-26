@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Success from './pages/Success'
 import Single from './pages/Single'
 import Home from './pages/Home'
 import Write from './pages/Write'
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
     {
         path: '/login',
         element: <Login />,
+    },
+    {
+        path: '/success',
+        element: <Success />,
     },
 ])
 
