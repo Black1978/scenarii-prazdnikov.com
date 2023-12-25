@@ -9,6 +9,7 @@ import Success from './pages/Success'
 import Single from './pages/Single'
 import Home from './pages/Home'
 import Write from './pages/Write'
+import AvatarChange from './pages/AvatarChange'
 
 const Layout = () => {
     return (
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
     {
         path: '/success',
         element: <Success />,
+    },
+    {
+        path: '/avatarchange',
+        element: <AvatarChange />,
     },
 ])
 

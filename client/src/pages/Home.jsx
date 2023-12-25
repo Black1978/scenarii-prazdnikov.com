@@ -3,10 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Home = () => {
-
-
-
-
     const [posts, setPosts] = useState([])
     const cat = useLocation().search
 
@@ -27,9 +23,6 @@ const Home = () => {
         return doc.body.textContent
     }
 
-
-    
-
     return (
         <div className='home'>
             <div className='posts'>
@@ -37,13 +30,13 @@ const Home = () => {
                     return (
                         <div className='post' key={post.id}>
                             <div className='img'>
-                                <img src={`../upload/${post.img}`} alt='' />
+                                <img src={`${process.env.REACT_APP_STATIC_URL}pictures/${post.img}`} alt='' />
                             </div>
                             <div className='content'>
                                 <Link className='link' to={'/post/' + post.id}>
                                     <h2>{post.title}</h2>
                                 </Link>
-                                <p>{getText(post.desc)}</p>
+                                <p className='contentDesc'>{getText(post.desc)}</p>
                                 <Link className='link' to={'/post/' + post.id}>
                                     <button>Читать</button>
                                 </Link>

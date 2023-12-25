@@ -18,9 +18,8 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-           const response = await login(inputs)
-           console.log(response)
-           navigate('/')
+            await login(inputs)
+            navigate('/')
         } catch (err) {
             setError(err.response.data)
         }
@@ -45,7 +44,9 @@ const Login = () => {
                     </Link>
                 </span>
                 <p>
-                    <Link className='link' to='/'>Главная страница</Link>
+                    <Link className='link' to='/'>
+                        Главная страница
+                    </Link>
                 </p>
             </form>
         </div>

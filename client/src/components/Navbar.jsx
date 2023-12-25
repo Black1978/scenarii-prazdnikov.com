@@ -12,22 +12,26 @@ const Navbar = () => {
                     <Link to='/'>Scenarii prazdnikov</Link>
                 </div>
                 <div className='links'>
-                    <Link className='link' to='/?cat=science'>
+                    <Link className='link' to='/?cat=childholid'>
                         <h6>Детские праздники</h6>
                     </Link>
-                    <Link className='link' to='/?cat=technology'>
+                    <Link className='link' to='/?cat=newyearholid'>
                         <h6>Новый Год</h6>
                     </Link>
-                    <Link className='link' to='/?cat=cinema'>
+                    <Link className='link' to='/?cat=profholid'>
                         <h6>Профессиональные праздники</h6>
                     </Link>
-                    <Link className='link' to='/?cat=design'>
+                    <Link className='link' to='/?cat=sportholid'>
                         <h6>Спортивные праздники</h6>
                     </Link>
-                    <Link className='link' to='/?cat=food'>
+                    <Link className='link' to='/?cat=publholid'>
                         <h6>Государственные праздники</h6>
                     </Link>
-                    <span>{currentUser?.username}</span>
+                    {currentUser?.img && <img src={`http://localhost:8801/avatars/${currentUser?.img}`} alt='user' />}
+                    <Link className='link' to='/avatarchange'>
+                        <span>{currentUser?.username}</span>
+                    </Link>
+
                     {currentUser ? (
                         <span onClick={() => logout()}>Logout</span>
                     ) : (
@@ -36,11 +40,9 @@ const Navbar = () => {
                         </Link>
                     )}
                     {currentUser && (
-                        <span className='write'>
-                            <Link to='/write' className='link'>
-                                Писать
-                            </Link>
-                        </span>
+                        <Link to='/write' className='link'>
+                            <span className='write'>Писать</span>
+                        </Link>
                     )}
                 </div>
             </div>

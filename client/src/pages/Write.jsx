@@ -17,15 +17,24 @@ const Write = () => {
     const upload = async () => {
         try {
             const formData = new FormData()
-            formData.append('file', file)
+            formData.append('picture', file)
             const res = await axios.post('/upload', formData)
             return res.data
-        } catch (error) {}
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleClick = async (e) => {
         e.preventDefault()
-        const imgUrl = await upload()
+        let imgUrl
+        if (file) {
+            imgUrl = await upload()
+            console.log(imgUrl)
+        } else {
+            imgUrl = null
+        }
+
         try {
             state
                 ? await axios.put('/posts/' + state.id, {
@@ -39,7 +48,7 @@ const Write = () => {
                       desc: value,
                       img: file ? imgUrl : '',
                       cat,
-                      date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
+                      date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
                   })
         } catch (error) {
             console.log(error)
@@ -69,9 +78,9 @@ const Write = () => {
                         <b>Visibility: </b> Public
                     </span> */}
                     <input
-                        style={{ display: 'none' }}
                         type='file'
                         id='file'
+                        accept='image/*'
                         onChange={(e) => setFile(e.target.files[0])}
                     />
                     <label htmlFor='file' className='file'>
@@ -86,57 +95,58 @@ const Write = () => {
                     <h2>Категории</h2>
                     <div className='cat'>
                         <input
-                            checked={cat === 'art'}
+                            checked={cat === 'childholid'}
                             type='radio'
                             name='cat'
-                            value='art'
-                            id='art'
+                            value='childholid'
+                            id='childholid'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='art'>Детские праздники</label>
+                        <label htmlFor='childholid'>Детские праздники</label>
                     </div>
                     <div className='cat'>
                         <input
-                            checked={cat === 'science'}
+                            checked={cat === 'newyearholid'}
                             type='radio'
                             name='cat'
-                            value='science'
-                            id='science'
+                            value='newyearholid'
+                            id='newyearholid'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='science'>Новый Год</label>
+                        <label htmlFor='newyearholid'>Новый Год</label>
                     </div>
                     <div className='cat'>
                         <input
-                            checked={cat === 'technology'}
+                            checked={cat === 'profholid'}
                             type='radio'
                             name='cat'
-                            value='technology'
-                            id='technology'
+                            value='profholid'
+                            id='profholid'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='technology'>Профессиональные праздники</label>
+                        <label htmlFor='profholid'>Профессиональные праздники</label>
                     </div>
                     <div className='cat'>
                         <input
+                            checked={cat === 'sportholid'}
                             type='radio'
                             name='cat'
-                            value='cinema'
-                            id='cinema'
+                            value='sportholid'
+                            id='sportholid'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='cinema'>Спортивные праздники</label>
+                        <label htmlFor='sportholid'>Спортивные праздники</label>
                     </div>
                     <div className='cat'>
                         <input
-                            checked={cat === 'design'}
+                            checked={cat === 'publholid'}
                             type='radio'
                             name='cat'
-                            value='design'
-                            id='design'
+                            value='publholid'
+                            id='publholid'
                             onChange={(e) => setCat(e.target.value)}
                         />
-                        <label htmlFor='design'>Государственные праздники</label>
+                        <label htmlFor='publholid'>Государственные праздники</label>
                     </div>
                 </div>
             </div>

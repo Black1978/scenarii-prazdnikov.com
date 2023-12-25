@@ -53,6 +53,15 @@ $fivethColor: #969696;
             background-color: $fivethColor;
             min-height: calc(100vh - 90px);
 
+            .avatar {
+                flex-shrink: 0;
+                width: 90px;
+                height: 90px;
+                object-fit: cover;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-bottom: 20px;
+            }
             @include tablet {
                 min-width: calc(100vw - 90px);
             }
@@ -81,7 +90,7 @@ $fivethColor: #969696;
                 text-align: center;
                 margin-top: 5px;
                 margin-bottom: 5px;
-                
+
                 @include mobile {
                     font-size: 20px;
                 }
@@ -90,6 +99,7 @@ $fivethColor: #969696;
             form {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 gap: 20px;
                 padding: 50px;
                 background-color: $forthColor;
@@ -157,6 +167,7 @@ $fivethColor: #969696;
                     color: $forthColor;
                     font-weight: 500;
                     padding: 10px;
+                    min-width: 200px;
 
                     &:disabled {
                         background-color: dimgrey;
@@ -174,7 +185,7 @@ $fivethColor: #969696;
                         font-size: 16px;
                     }
                 }
-    
+
                 span {
                     font-size: 14px;
                     text-align: center;
@@ -182,7 +193,7 @@ $fivethColor: #969696;
                         font-size: 10px;
                     }
                 }
-               
+
                 p {
                     font-size: 16px;
                     color: $thirdColor;
@@ -194,8 +205,6 @@ $fivethColor: #969696;
                         font-size: 12px;
                     }
                 }
-
-             
             }
         }
         //NAVBAR
@@ -236,6 +245,19 @@ $fivethColor: #969696;
                     gap: 10px;
                     align-items: center;
                     justify-content: space-around;
+                    img {
+                        flex-shrink: 0;
+                        width: 30px;
+                        height: 30px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        margin-left: 20px;
+                        @include tablet() {
+                            margin-left: 0;
+                            margin-top: 20px;
+                        }
+                    }
                     @include tablet {
                         flex-direction: column;
                         gap: 20px;
@@ -270,12 +292,9 @@ $fivethColor: #969696;
                         justify-content: center;
                         border: 1px solid #fff;
                         color: $forthColor;
-
-                        a {
-                            font-size: 15px;
-                            font-weight: 300;
-                            font-style: normal;
-                        }
+                        font-size: 15px;
+                        font-weight: 300;
+                        font-style: normal;
 
                         &:hover {
                             color: teal;
@@ -389,6 +408,17 @@ $fivethColor: #969696;
                         justify-content: space-between;
                         gap: 20px;
                         min-width: 300px;
+                        .contentDesc {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -moz-box;
+                            -moz-box-orient: vertical;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 8;
+                            -webkit-box-orient: vertical;
+                            line-clamp: 3;
+                            box-orient: vertical;
+                        }
                         @include tablet {
                             min-width: 0;
                         }
@@ -432,8 +462,10 @@ $fivethColor: #969696;
         .single {
             display: flex;
             gap: 50px;
+            margin-top: 50px;
             @include tablet {
                 flex: 7 1;
+                margin-top: 0;
             }
 
             .content {
