@@ -27,7 +27,7 @@ const Navbar = () => {
                     <Link className='link' to='/?cat=publholid'>
                         <h6>Государственные праздники</h6>
                     </Link>
-                    {currentUser?.img && <img src={`http://localhost:8801/avatars/${currentUser?.img}`} alt='user' />}
+                    {currentUser?.img && <img src={`${process.env.REACT_APP_STATIC_URL}avatars/${currentUser?.img}`} alt='user' />}
                     <Link className='link' to='/avatarchange'>
                         <span>{currentUser?.username}</span>
                     </Link>

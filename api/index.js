@@ -24,9 +24,9 @@ app.use(cookieParser())
 const corsConfig = {
     origin: true,
     credentials: true,
-  };
-  
-  app.use(cors(corsConfig));
+}
+
+app.use(cors(corsConfig))
 
 app.post(
     '/api/upload',
@@ -38,7 +38,7 @@ app.post(
         let filename
         Object.keys(files).forEach((key) => {
             filename = Date.now() + files[key].name
-            const filepath = path.join(__dirname, 'upload', 'pictures', filename)
+            const filepath = path.join(__dirname, '..', 'public', 'pictures', filename)
             files[key].mv(filepath, (err) => {
                 if (err) return res.status(500).json({ status: 'error', message: err })
             })
@@ -58,7 +58,7 @@ app.post(
         let filename
         Object.keys(files).forEach((key) => {
             filename = Date.now() + files[key].name
-            const filepath = path.join(__dirname, 'upload', 'avatars', filename)
+            const filepath = path.join(__dirname, '..', 'public', 'avatars', filename)
             files[key].mv(filepath, (err) => {
                 if (err) return res.status(500).json({ status: 'error', message: err })
             })
@@ -72,7 +72,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/update', updateRoutes)
 
-app.use(express.static(__dirname + '/upload'))
+app.use(express.static(path.join(__dirname, '..', '/public')))
 
 app.listen(process.env.PORT, () => {
     console.log('Connected!')
